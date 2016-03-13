@@ -1,0 +1,100 @@
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\m_pm_report
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v316rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v317pl1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\profilefield_yahoo_update_url
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v312rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v313
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v315rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\profilefield_remove_underscore_from_alpha
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\increase_size_of_dateformat; Time: 0.04 seconds
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\m_pm_report
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v316rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v317pl1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\profilefield_yahoo_update_url
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v312rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v313
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v315rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\profilefield_remove_underscore_from_alpha
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\increase_size_of_dateformat.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\increase_size_of_dateformat; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\m_pm_report
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v316rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v317pl1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\profilefield_yahoo_update_url
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v312rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v313
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v315rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\profilefield_remove_underscore_from_alpha
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\increase_size_of_dateformat
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v313rc2
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\plupload_last_gc_dynamic
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v314rc2
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v312
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\update_custom_bbcodes_with_idn
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v314rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v314
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\v318rc1.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\v318rc1; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\m_pm_report
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v316rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v317pl1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\profilefield_yahoo_update_url
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v312rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v313
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v315rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\profilefield_remove_underscore_from_alpha
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\increase_size_of_dateformat
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v313rc2
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\plupload_last_gc_dynamic
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v314rc2
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v312
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\update_custom_bbcodes_with_idn
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v314rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v314
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318rc1.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\v318rc1.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\v318rc1; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\m_pm_report
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v316rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v317pl1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\profilefield_yahoo_update_url
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v312rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v313
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v315rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\profilefield_remove_underscore_from_alpha
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\increase_size_of_dateformat
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v313rc2
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\plupload_last_gc_dynamic
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v314rc2
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v312
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\update_custom_bbcodes_with_idn
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v314rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v314
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Installing Schema: \phpbb\db\migration\data\v31x\v318.
+[INFO] Installed Schema: \phpbb\db\migration\data\v31x\v318; Time: 0.00 seconds
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\m_pm_report
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v316rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v317pl1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\profilefield_yahoo_update_url
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v312rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v313
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v315rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\profilefield_remove_underscore_from_alpha
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\increase_size_of_dateformat
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v313rc2
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\plupload_last_gc_dynamic
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v314rc2
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v312
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\update_custom_bbcodes_with_idn
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v314rc1
+[DEBUG] Migration already effectively installed (skipped): \phpbb\db\migration\data\v31x\v314
+[DEBUG] Apply dependencies of \phpbb\db\migration\data\v31x\v318.
+[DEBUG] Installing Data: \phpbb\db\migration\data\v31x\v318.
+[INFO] Installed Data: \phpbb\db\migration\data\v31x\v318; Time: 0.00 seconds
