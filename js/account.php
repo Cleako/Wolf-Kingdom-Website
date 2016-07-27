@@ -32,7 +32,7 @@ require_once '../inc/database_config.php';
 require_once '../inc/charfunctions.php';
 include("../inc/peoplesignClient.php");
 
-$script_directory = '/';
+$script_directory = '../';
 $connector = new DarscapeDbc();
 if($_POST['nm']){
 
@@ -114,7 +114,7 @@ if($check['phpbb_id'] == $user->data['user_id']){
 	<div id="hero-page-details">
 		<span class="sm-stats"><?php echo $username; ?></span>
 		<span class="sm-stats">Combat Level: <?php echo $combat; ?></span>
-		<span class="sm-stats"><a href="<?php echo $script_directory; ?>characters/<?php echo $usernamelink; ?>">View Skill Levels</a></span>
+		<span class="sm-stats"><a href="<?php echo $script_directory; ?>highscores.php/characters/<?php echo $usernamelink; ?>">View Skill Levels</a></span>
 		<?php if($online == 1) { echo '<span id="green">Online</span>'; } else { echo '<span id="red">Offline</span>'; } ?>
 	</div>
 	<div id="button-links">

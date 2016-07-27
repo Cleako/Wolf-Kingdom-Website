@@ -46,7 +46,7 @@ if($user->data['is_registered']) {
 					</div>
 					<script type="text/javascript" language="JavaScript">
 						$(document).ready(function() {
-							$.post("/js/account.php", {username: '<?php echo $username; ?>', userenc: '<?php echo $user; ?>', owner: '<?php echo $id; ?>', hair: <?php echo $hc; ?>, head: <?php echo $hsprite; ?>, skin: <?php echo $sc; ?>, top: <?php echo $tc; ?>, gen: <?php echo $gender; ?>, pants: <?php echo $pc; ?>, combat: <?php echo $combat; ?>, online: <?php echo $online; ?>} ,function(data) {
+							$.post("../js/account.php", {username: '<?php echo $username; ?>', userenc: '<?php echo $user; ?>', owner: '<?php echo $id; ?>', hair: <?php echo $hc; ?>, head: <?php echo $hsprite; ?>, skin: <?php echo $sc; ?>, top: <?php echo $tc; ?>, gen: <?php echo $gender; ?>, pants: <?php echo $pc; ?>, combat: <?php echo $combat; ?>, online: <?php echo $online; ?>} ,function(data) {
 								$("#character-details").html(data).show();
 								$("a#inline").fancybox({
 									'hideOnContentClick': false,
