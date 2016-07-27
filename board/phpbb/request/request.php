@@ -41,7 +41,7 @@ class request implements \phpbb\request\request_interface
 	/**
 	* @var
 	*/
-	protected $super_globals_disabled = true;
+	protected $super_globals_disabled = false;
 
 	/**
 	* @var	array	An associative array that has the value of super global constants as keys and holds their data as values.
@@ -325,7 +325,9 @@ class request implements \phpbb\request\request_interface
 	*/
 	public function is_secure()
 	{
-		return $this->server('HTTPS') == 'on';
+		$https = $this->server('HTTPS');
+		$https = $this->server('HTTP_X_FORWARDED_PROTO') === 'https' ? 'on' : $https;
+		return !empty($https) && $https !== 'off';
 	}
 
 	/**

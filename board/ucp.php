@@ -78,19 +78,16 @@ switch ($mode)
 	case 'login':
 		if ($user->data['is_registered'])
 		{
-			//redirect(append_sid("{$phpbb_root_path}index.$phpEx"));
-                        redirect(append_sid("/index.php"));
+			redirect(append_sid("{$phpbb_root_path}index.$phpEx"));
 		}
 
-		//login_box(request_var('redirect', "index.$phpEx"));
-                login_box(request_var('redirect', "/index.php"));
+		login_box(request_var('redirect', "index.$phpEx"));
 	break;
 
 	case 'login_link':
 		if ($user->data['is_registered'])
 		{
-			//redirect(append_sid("{$phpbb_root_path}index.$phpEx"));
-                        redirect(append_sid("/index.php"));
+			redirect(append_sid("{$phpbb_root_path}index.$phpEx"));
 		}
 
 		$module->load('ucp', 'login_link');
@@ -104,16 +101,13 @@ switch ($mode)
 		}
 		else if ($user->data['user_id'] != ANONYMOUS)
 		{
-			//$redirect = request_var('redirect', "{$phpbb_root_path}index.$phpEx");
-                        redirect(append_sid("/index.php"));
-                        meta_refresh(3, append_sid($redirect));
+			meta_refresh(3, append_sid("{$phpbb_root_path}index.$phpEx"));
 
-			$message = $user->lang['LOGOUT_FAILED'] . '<br /><br />' . sprintf($user->lang['RETURN_INDEX'], '<a href="' . append_sid($redirect) . '">', '</a> ');
+			$message = $user->lang['LOGOUT_FAILED'] . '<br /><br />' . sprintf($user->lang['RETURN_INDEX'], '<a href="' . append_sid("{$phpbb_root_path}index.$phpEx") . '">', '</a> ');
 			trigger_error($message);
 		}
 
-		//redirect(append_sid("{$phpbb_root_path}index.$phpEx"));
-                redirect(append_sid("/index.php"));
+		redirect(append_sid("{$phpbb_root_path}index.$phpEx"));
 	break;
 
 	case 'terms':
