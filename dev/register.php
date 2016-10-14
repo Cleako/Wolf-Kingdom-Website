@@ -106,12 +106,12 @@ if (isset($_POST['signup'])) {
 		<!-- add header -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
-				<span class="sr-only">Toggle navigation</span>
+				<span class="sr-only"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.php">Coding Made Simple</a>
+			<a class="navbar-brand" href="index.php">Wolf Kingdom</a>
 		</div>
 		<!-- menu items -->
 		<div class="collapse navbar-collapse" id="navbar1">
@@ -128,7 +128,7 @@ if (isset($_POST['signup'])) {
 		<div class="col-md-4 col-md-offset-4 well">
 			<form role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="signupform">
 				<fieldset>
-					<legend>Sign Up</legend>
+					<legend>Register</legend>
 
 					<div class="form-group">
 						<label for="name">Username</label>

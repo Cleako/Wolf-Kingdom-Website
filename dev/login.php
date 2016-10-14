@@ -16,7 +16,7 @@ if (isset($_POST['login'])) {
 
 	if ($row = mysqli_fetch_array($result)) {
 		$_SESSION['usr_id'] = $row['id'];
-		$_SESSION['usr_name'] = $row['name'];
+		$_SESSION['usr_name'] = $row['username'];
 		header("Location: index.php");
 	} else {
 		$errormsg = "Incorrect username or password.";
@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PHP Login Script</title>
+	<title>Player Login</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 </head>
@@ -38,12 +38,12 @@ if (isset($_POST['login'])) {
 		<!-- add header -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
-				<span class="sr-only">Toggle navigation</span>
+				<span class="sr-only"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.php">Koding Made Simple</a>
+			<a class="navbar-brand" href="index.php">Wolf Kingdom</a>
 		</div>
 		<!-- menu items -->
 		<div class="collapse navbar-collapse" id="navbar1">
@@ -63,7 +63,7 @@ if (isset($_POST['login'])) {
 					<legend>Login</legend>
 					
 					<div class="form-group">
-						<label for="name">username</label>
+						<label for="name">Username</label>
 						<input type="text" name="username" placeholder="Your username" required class="form-control" />
 					</div>
 
@@ -82,7 +82,7 @@ if (isset($_POST['login'])) {
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4 text-center">	
-		New User? <a href="register.php">Sign Up Here</a>
+		New User? <a href="register.php">Register</a>
 		</div>
 	</div>
 </div>

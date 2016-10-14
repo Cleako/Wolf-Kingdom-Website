@@ -1,6 +1,6 @@
 <?php
 
-	include 'common.php';
+//include 'common.php';
 	
 if(isset($_POST['submit']))
 {	
@@ -30,22 +30,22 @@ echo "<fieldset class=\"menu main\"><Divine>Change Password Error</Divine>Please
 define('ROOT', './');
 } 
 else
-$con = mysql_connect("localhost","USERNAME","PASSWORD");
+$con = mysql_connect("localhost","wk","wolf");
 if (!$con)
   {
   die('' . mysql_error());
   }
-mysql_select_db("DATABASE", $con);
+mysql_select_db("wolf_kingdom", $con);
 
-$result = mysql_query("SELECT pass FROM players where username='$name'"); 
+$result = mysql_query("SELECT pass FROM wk_players where username='$name'"); 
 $thepass = mysql_result($result, 0);
-$lol = md5($thepass);
-$lol2 = md5($pass);
-$lol3 = md5($newpass);
+$lol = sha1($thepass);
+$lol2 = sha1($pass);
+$lol3 = sha1($newpass);
 
 if("'$lol2'" == "'$thepass'")
     {
-	mysql_query("UPDATE players SET pass='$lol3' where username='$name'");
+	mysql_query("UPDATE wk_players SET pass='$lol3' where username='$name'");
 	echo 'Your password has been changed.<br><br><a href="index.php">Go Back</a>';
 	exit;
 	}
