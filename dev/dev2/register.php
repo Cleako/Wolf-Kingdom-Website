@@ -54,16 +54,16 @@
 			$errors[] = 'Invalid username.';
 		}
 
-$hello = $db->query("SELECT * FROM wk_players WHERE creation_ip='$remote_addr'");
-$q = "SELECT * FROM wk_players WHERE creation_ip='$remote_addr'";
+		$hello = $db->query("SELECT * FROM wk_players WHERE creation_ip='$remote_addr'");
+		$q = "SELECT * FROM wk_players WHERE creation_ip='$remote_addr'";
 		$result = mysql_query($q);
 		$noob=mysql_numrows($result);
 
-if($noob >= 9999999999999999999999999996){
+		if($noob >= 9999999999999999999999999996){
 			$errors[] = 'Only 5 accounts permitted per IP.<br><br><a href="register.php">Go Back</a>';
 		}
 
-if(strlen($username) > 12){
+		if(strlen($username) > 12){
 			$errors[] = 'Username can not be over 12 characters.<br><br><a href="register.php">Go Back</a>';
 		}
  
@@ -87,14 +87,13 @@ if(strlen($username) > 12){
 		$time = time();
 		$gamepass = sha1($password);
 		$gamename = explode('.', encode_username($username));
-		$db->query('INSERT INTO `wk_players`(`user`, `username`, `pass`, `creation_date`, `creation_ip`) VALUES(\''.$gamename[0].'\', \''.$username.'\', \''.$gamepass.'\', \''.$time.'\', \''.$remote_addr.'\')');
-		$db->query('INSERT INTO `wk_invitems`(`user`, `id`, `amount`, `wielded`, `slot`) VALUES(\''.$gamename[0].'\', 77, 1, 1, 1)');
-		$db->query('INSERT INTO `wk_invitems`(`user`, `id`, `amount`, `wielded`, `slot`) VALUES(\''.$gamename[0].'\', 1263, 1, 0, 2)');
-		$db->query('INSERT INTO `wk_invitems`(`user`, `id`, `amount`, `wielded`, `slot`) VALUES(\''.$gamename[0].'\', 81, 1, 0, 3)');
-		$db->query('INSERT INTO `wk_invitems`(`user`, `id`, `amount`, `wielded`, `slot`) VALUES(\''.$gamename[0].'\', 10, 5000, 0, 4)');
-		$db->query('INSERT INTO `wk_experience`(`user`) VALUES(\''.$gamename[0].'\')');
-		$db->query('INSERT INTO `wk_curstats`(`user`) VALUES(\''.$gamename[0].'\')');
-
+		$db->query('INSERT INTO `wk_players`(`user`, `username`, `pass`, `creation_date`, `creation_ip`) VALUES (\''.$gamename[0].'\', \''.$username.'\', \''.$gamepass.'\', \''.$time.'\', \''.$remote_addr.'\')');
+		$db->query('INSERT INTO `wk_invitems`(`user`, `id`, `amount`, `wielded`, `slot`) VALUES (\''.$gamename[0].'\', 77, 1, 1, 1)');
+		$db->query('INSERT INTO `wk_invitems`(`user`, `id`, `amount`, `wielded`, `slot`) VALUES (\''.$gamename[0].'\', 1263, 1, 0, 2)');
+		$db->query('INSERT INTO `wk_invitems`(`user`, `id`, `amount`, `wielded`, `slot`) VALUES (\''.$gamename[0].'\', 81, 1, 0, 3)');
+		$db->query('INSERT INTO `wk_invitems`(`user`, `id`, `amount`, `wielded`, `slot`) VALUES (\''.$gamename[0].'\', 10, 5000, 0, 4)');
+		$db->query('INSERT INTO `wk_experience`(`user`) VALUES (\''.$gamename[0].'\')');
+		$db->query('INSERT INTO `wk_curstats`(`user`) VALUES (\''.$gamename[0].'\')');
 		echo 'User \''.htmlspecialchars($username).'\' has been created. You may now use this username and password to log into Open RSCD v4.<br><br><a href="register.php">Go Back</a>';
 		$db->close();
 		exit;

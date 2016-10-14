@@ -5,19 +5,65 @@ if(isset($_SESSION['usr_id'])) {
 	header("Location: index.php");
 }
 
-include_once 'dbconnect.php';
+include_once 'common.php';
 
 //set validation error flag as false
 $error = false;
+
+FUNCTION anti_injection( $username, $password ) {
+           // We'll first get rid of any special characters using a simple regex statement.
+           // After that, we'll get rid of any SQL command words using a string replacment.
+            $banlist = ARRAY (
+                    "insert", "select", "update", "delete", "distinct", "having", "truncate", "replace",
+                    "handler", "like", " as ", "or ", "procedure", "limit", "order by", "group by", "asc", "desc"
+            );
+            // ---------------------------------------------
+            IF ( EREGI ( "[a-zA-Z0-9]+", $user ) ) {
+                    $username = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( $username ) ) );
+            } ELSE {
+                    $username = NULL;
+            }
+            // ---------------------------------------------
+            // Now to make sure the given password is an alphanumerical string
+            // devoid of any special characters. strtolower() is being used
+            // because unfortunately, str_ireplace() only works with PHP5.
+            IF ( EREGI ( "[a-zA-Z0-9]+", $password ) ) {
+                    $password = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( $password ) ) );
+            } ELSE {
+                    $password = NULL;
+            }
+            // ---------------------------------------------
+            // Now to make an array so we can dump these variables into the SQL query.
+            // If either user or pass is NULL (because of inclusion of illegal characters),
+            // the whole script will stop dead in its tracks.
+            $array = ARRAY ( 'username' => $username, 'password' => $password );
+            // ---------------------------------------------
+            IF ( IN_ARRAY ( NULL, $array ) ) {
+                    DIE ( 'Invalid use of login and/or password. Please use a normal method.' );
+            } ELSE {
+                    RETURN $array;
+            }
+}
 
 //check if form is submitted
 if (isset($_POST['signup'])) {
 	$username = mysqli_real_escape_string($con, $_POST['username']);
 	$password = mysqli_real_escape_string($con, $_POST['password']);
 	$cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
-	
-	//username can contain only alpha characters and space
-	if (!preg_match("/^[a-zA-Z ]+$/",$username)) {
+	$remote_addr = $_SERVER['REMOTE_ADDR'];
+	$usernameHash = usernameToHash($username);
+	if($usernameHash < 0) {
+			$errors[] = 'Invalid username.';
+	}
+	$hello = $db->query("SELECT * FROM wk_players WHERE creation_ip='$remote_addr'");
+	$q = "SELECT * FROM wk_players WHERE creation_ip='$remote_addr'";
+	$result = mysql_query($q);
+	$noob=mysql_numrows($result);
+	if($noob >= 9999999999999999999999999996){
+		$error = true;
+		$password_error = "Password must be minimum of 6 characters";
+	}
+	if (!preg_match("/^[a-zA-Z ]+$/",$username)) { //username can contain only alpha characters and space
 		$error = true;
 		$name_error = "Username must contain only alphabets and space";
 	}
@@ -30,11 +76,18 @@ if (isset($_POST['signup'])) {
 		$cpassword_error = "Password and Confirm Password doesn't match";
 	}
 	if (!$error) {
-		if(mysqli_query($con, "INSERT INTO users(username,password) VALUES('" . $username . "', '" . sha1($password) . "')")) {
-			$successmsg = "Successfully Registered! <a href='login.php'>Click here to Login</a>";
-		} else {
-			$errormsg = "Error in registering...Please try again later!";
-		}
+		$time = time();
+		$gamepass = sha1($password);
+		$gamename = explode('.', encode_username($username));
+		$db->query('INSERT INTO `wk_players`(`user`, `username`, `pass`, `creation_date`, `creation_ip`) VALUES (\''.$gamename[0].'\', \''.$username.'\', \''.$gamepass.'\', \''.$time.'\', \''.$remote_addr.'\')');
+		$db->query('INSERT INTO `wk_invitems`(`user`, `id`, `amount`, `wielded`, `slot`) VALUES (\''.$gamename[0].'\', 77, 1, 1, 1)');
+		$db->query('INSERT INTO `wk_invitems`(`user`, `id`, `amount`, `wielded`, `slot`) VALUES (\''.$gamename[0].'\', 1263, 1, 0, 2)');
+		$db->query('INSERT INTO `wk_invitems`(`user`, `id`, `amount`, `wielded`, `slot`) VALUES (\''.$gamename[0].'\', 81, 1, 0, 3)');
+		$db->query('INSERT INTO `wk_invitems`(`user`, `id`, `amount`, `wielded`, `slot`) VALUES (\''.$gamename[0].'\', 10, 5000, 0, 4)');
+		$db->query('INSERT INTO `wk_experience`(`user`) VALUES (\''.$gamename[0].'\')');
+		$db->query('INSERT INTO `wk_curstats`(`user`) VALUES (\''.$gamename[0].'\')');
+		$successmsg = 'User \''.htmlspecialchars($username).'\' has been created. <a href="login.php">Click here to Login</a>';
+		$db->close();
 	}
 }
 ?>
@@ -42,7 +95,7 @@ if (isset($_POST['signup'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>User Registration Script</title>
+	<title>Player Registration</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 </head>
@@ -58,13 +111,13 @@ if (isset($_POST['signup'])) {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.php">Koding Made Simple</a>
+			<a class="navbar-brand" href="index.php">Coding Made Simple</a>
 		</div>
 		<!-- menu items -->
 		<div class="collapse navbar-collapse" id="navbar1">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="login.php">Login</a></li>
-				<li class="active"><a href="register.php">Sign Up</a></li>
+				<li class="active"><a href="register.php">Register</a></li>
 			</ul>
 		</div>
 	</div>

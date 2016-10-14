@@ -5,14 +5,14 @@ if(isset($_SESSION['usr_id'])!="") {
 	header("Location: index.php");
 }
 
-include_once 'dbconnect.php';
+include_once 'common.php';
 
 //check if form is submitted
 if (isset($_POST['login'])) {
 
 	$username = mysqli_real_escape_string($con, $_POST['username']);
 	$password = mysqli_real_escape_string($con, $_POST['password']);
-	$result = mysqli_query($con, "SELECT * FROM users WHERE username = '" . $username. "' and password = '" . sha1($password) . "'");
+	$result = mysqli_query($con, "SELECT * FROM wk_players WHERE username = '" . $username. "' and pass = '" . sha1($password) . "'");
 
 	if ($row = mysqli_fetch_array($result)) {
 		$_SESSION['usr_id'] = $row['id'];
