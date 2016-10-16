@@ -41,7 +41,7 @@ class request implements \phpbb\request\request_interface
 	/**
 	* @var
 	*/
-	protected $super_globals_disabled = false;
+	protected $super_globals_disabled = true;
 
 	/**
 	* @var	array	An associative array that has the value of super global constants as keys and holds their data as values.
