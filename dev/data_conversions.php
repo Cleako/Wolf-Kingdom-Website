@@ -26,7 +26,7 @@
 
 		$s1 = trim($s1);
 		if (strlen($s1) > 12)
-			$s1 = substring($s1, 0, 12);
+			$s1 = substr($s1, 0, 12); //trims the username down to 12 characters if more are sent
 
 		$l = 0;
 		for ($j = 0;$j < strlen($s1);$j++) {

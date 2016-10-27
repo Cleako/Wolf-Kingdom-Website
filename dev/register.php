@@ -10,46 +10,15 @@ include_once 'common.php';
 //set validation error flag as false
 $error = false;
 
-FUNCTION anti_injection( $username, $password ) {
-           // We'll first get rid of any special characters using a simple regex statement.
-           // After that, we'll get rid of any SQL command words using a string replacment.
-            $banlist = ARRAY (
-                    "insert", "select", "update", "delete", "distinct", "having", "truncate", "replace",
-                    "handler", "like", " as ", "or ", "procedure", "limit", "order by", "group by", "asc", "desc"
-            );
-            // ---------------------------------------------
-            IF ( EREGI ( "[a-zA-Z0-9]+", $user ) ) {
-                    $username = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( $username ) ) );
-            } ELSE {
-                    $username = NULL;
-            }
-            // ---------------------------------------------
-            // Now to make sure the given password is an alphanumerical string
-            // devoid of any special characters. strtolower() is being used
-            // because unfortunately, str_ireplace() only works with PHP5.
-            IF ( EREGI ( "[a-zA-Z0-9]+", $password ) ) {
-                    $password = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( $password ) ) );
-            } ELSE {
-                    $password = NULL;
-            }
-            // ---------------------------------------------
-            // Now to make an array so we can dump these variables into the SQL query.
-            // If either user or pass is NULL (because of inclusion of illegal characters),
-            // the whole script will stop dead in its tracks.
-            $array = ARRAY ( 'username' => $username, 'password' => $password );
-            // ---------------------------------------------
-            IF ( IN_ARRAY ( NULL, $array ) ) {
-                    DIE ( 'Invalid use of login and/or password. Please use a normal method.' );
-            } ELSE {
-                    RETURN $array;
-            }
-}
-
 //check if form is submitted
 if (isset($_POST['signup'])) {
-	$username = mysqli_real_escape_string($con, $_POST['username']);
-	$password = mysqli_real_escape_string($con, $_POST['password']);
-	$cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
+	$banlist = ARRAY (
+                "insert", "select", "update", "delete", "distinct", "having", "truncate", "replace",
+                "handler", "like", " as ", "or ", "procedure", "limit", "order by", "group by", "asc", "desc"
+        );
+        $username = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( mysqli_real_escape_string($con, $_POST['username']) ) ) );
+	$password = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( mysqli_real_escape_string($con, $_POST['password']) ) ) );
+	$cpassword = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( mysqli_real_escape_string($con, $_POST['cpassword']) ) ) );
 	$remote_addr = $_SERVER['REMOTE_ADDR'];
 	$usernameHash = usernameToHash($username);
 	if($usernameHash < 0) {
@@ -63,13 +32,13 @@ if (isset($_POST['signup'])) {
 		$error = true;
 		$password_error = "You have created too many players already.";
 	}
-	if (!preg_match("/^[a-zA-Z0-9]+([ ][a-zA-Z0-9]+)?$/",$username)) {
-		$error = true;
-		$name_error = "Username may contain only letters, numbers, and a space.";
-	}
 	if(strlen($username) > 12) {
 		$error = true;
 		$password_error = "Username may not be longer than 12 characters";
+	}
+	if (!preg_match("/^[a-zA-Z0-9]+([ ][a-zA-Z0-9]+)?$/",$username)) {
+		$error = true;
+		$name_error = "Username may contain only letters, numbers, and a space.";
 	}
 	if(strlen($password) < 4) {
 		$error = true;

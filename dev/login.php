@@ -9,9 +9,12 @@ include_once 'common.php';
 
 //check if form is submitted
 if (isset($_POST['login'])) {
-
-	$username = mysqli_real_escape_string($con, $_POST['username']);
-	$password = mysqli_real_escape_string($con, $_POST['password']);
+        $banlist = ARRAY (
+                "insert", "select", "update", "delete", "distinct", "having", "truncate", "replace",
+                "handler", "like", " as ", "or ", "procedure", "limit", "order by", "group by", "asc", "desc"
+        );
+	$username = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( mysqli_real_escape_string($con, $_POST['username']) ) ) );
+	$password = TRIM ( STR_REPLACE ( $banlist, '', STRTOLOWER ( mysqli_real_escape_string($con, $_POST['password']) ) ) );
 	$result = mysqli_query($con, "SELECT * FROM wk_players WHERE username = '" . $username. "' and pass = '" . sha1($password) . "'");
 
 	if ($row = mysqli_fetch_array($result)) {
