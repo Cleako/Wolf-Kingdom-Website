@@ -26,7 +26,7 @@ class DBLayer
 	}
 	function query($sql, $unbuffered = false)
 	{
-		LogQuery($sql);
+		//LogQuery($sql);
 		if (defined('SHOW_QUERIES')) $q_start = get_microtime();
 		$this->query_result = @mysqli_query($this->link_id, $sql);
 		if ($this->query_result)

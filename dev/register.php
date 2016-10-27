@@ -57,23 +57,27 @@ if (isset($_POST['signup'])) {
 	}
 	$hello = $db->query("SELECT * FROM wk_players WHERE creation_ip='$remote_addr'");
 	$q = "SELECT * FROM wk_players WHERE creation_ip='$remote_addr'";
-	$result = mysql_query($q);
-	$noob=mysql_numrows($result);
-	if($noob >= 9999999999999999999999999996){
+	$result = mysqli_query($con, $q);
+	$noob=mysqli_num_rows($result);
+	if($noob >= 999999999999999){
 		$error = true;
-		$password_error = "Password must be minimum of 6 characters";
+		$password_error = "You have created too many players already.";
 	}
-	if (!preg_match("/^[a-zA-Z ]+$/",$username)) { //username can contain only alpha characters and space
+	if (!preg_match("/^[a-zA-Z0-9]+([ ][a-zA-Z0-9]+)?$/",$username)) {
 		$error = true;
-		$name_error = "Username must contain only alphabets and space";
+		$name_error = "Username may contain only letters, numbers, and a space.";
 	}
-	if(strlen($password) < 6) {
+	if(strlen($username) > 12) {
 		$error = true;
-		$password_error = "Password must be minimum of 6 characters";
+		$password_error = "Username may not be longer than 12 characters";
+	}
+	if(strlen($password) < 4) {
+		$error = true;
+		$password_error = "Password must be at least 4 characters or more.";
 	}
 	if($password != $cpassword) {
 		$error = true;
-		$cpassword_error = "Password and Confirm Password doesn't match";
+		$cpassword_error = "Password and confirm password didn't match.";
 	}
 	if (!$error) {
 		$time = time();
@@ -90,39 +94,8 @@ if (isset($_POST['signup'])) {
 		$db->close();
 	}
 }
+include 'header.php';
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Player Registration</title>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-</head>
-<body>
-
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid">
-		<!-- add header -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
-				<span class="sr-only"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="index.php">Wolf Kingdom</a>
-		</div>
-		<!-- menu items -->
-		<div class="collapse navbar-collapse" id="navbar1">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="login.php">Login</a></li>
-				<li class="active"><a href="register.php">Register</a></li>
-			</ul>
-		</div>
-	</div>
-</nav>
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4 well">
@@ -163,10 +136,6 @@ if (isset($_POST['signup'])) {
 		</div>
 	</div>
 </div>
-<script src="js/jquery-1.10.2.js"></script>
-<script src="js/bootstrap.min.js"></script>
-</body>
-</html>
-
-
-
+<?php
+include 'footer.php';
+?>
