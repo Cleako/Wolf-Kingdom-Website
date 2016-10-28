@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-include_once 'common.php';
-include 'charfunctions.php';
+include_once 'inc/common.php';
+include 'inc/charfunctions2.php';
 
 if (isset($_SESSION['usr_id'])) {
 
@@ -13,14 +13,14 @@ $newpass = $_POST['newpass'];
 
 if("$pass" == "")
 {
-echo "Change password error. <br><br>Please enter your current password.<br><br><a href='manage.php'>Go Back</a>";
+echo "Change password error. <br><br>Please enter your current password.<br><br><a href='changepass.php'>Go Back</a>";
 define('ROOT', './');
 exit;
 } 
 else
 
 if ("$newpass" == "") {
-    echo "Change password error <br><br>Please enter a new password.<br><br><a href='manage.php'>Go Back</a>";
+    echo "Change password error <br><br>Please enter a new password.<br><br><a href='changepass.php'>Go Back</a>";
     define('ROOT', './');
 } else {
 $thepass = ("SELECT pass FROM wk_players where username='" . $_SESSION['usr_name'] . "'");
@@ -35,12 +35,12 @@ if("'$lol2'" == "'$wolf'")
     {
 	mysqli_query($con, "UPDATE wk_players SET pass='$lol3' where username='".$_SESSION['usr_name']."'"); 
 	
-        echo 'Your password has been changed.<br><br><a href="manage.php">Go Back</a>';
+        echo 'Your password has been changed.<br><br><a href="changepass.php">Go Back</a>';
 	exit;
 	}
 	else 
 	{
-        echo 'Invalid current password or new password. <br><br><a href="manage.php">Go Back</a>' . '<br>';
+        echo 'Invalid current password or new password. <br><br><a href="changepass.php">Go Back</a>' . '<br>';
         define('ROOT', './');
 	exit;
 	}

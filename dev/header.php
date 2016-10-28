@@ -19,7 +19,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<?php if (isset($_SESSION['usr_id'])) { ?>
 				<li><p class="navbar-text">You are logged in as <a href="manage.php"><b><?php echo $_SESSION['usr_name']; ?></b>.</a></p></li>
-                                <li><a href="manage.php">Manage Player</a></li>
+                                <li><a href="changepass.php">Manage Player</a></li>
 				<li><a href="logout.php">Log Out</a></li>
 				<?php } else { ?>
 				<li><a href="login.php">Login</a></li>

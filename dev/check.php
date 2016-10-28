@@ -1,5 +1,5 @@
 <?php
-include_once 'common.php';
+include_once 'inc/common.php';
 
 if (isset($_POST["username"])) {
                 $username = mysqli_real_escape_string($con, $_POST["username"]);

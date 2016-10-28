@@ -5,7 +5,7 @@ if(isset($_SESSION['usr_id'])) {
 	header("Location: index.php");
 }
 
-include_once 'common.php';
+include_once 'inc/common.php';
 
 //set validation error flag as false
 $error = false;

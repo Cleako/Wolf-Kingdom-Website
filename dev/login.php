@@ -5,7 +5,7 @@ if(isset($_SESSION['usr_id'])!="") {
 	header("Location: index.php");
 }
 
-include_once 'common.php';
+include_once 'inc/common.php';
 
 //check if form is submitted
 if (isset($_POST['login'])) {

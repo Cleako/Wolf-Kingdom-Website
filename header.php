@@ -35,12 +35,15 @@ require_once 'inc/charfunctions.php';
 		<title>Wolf Kingdom</title>
 		<link rel="stylesheet" media="all" href="/css/style.css"/>
 		<link rel="stylesheet" href="/js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
 		<script src="/js/cufon.js" type="text/javascript"></script>
 		<script src="/js/Aurulent_Sans.font.js" type="text/javascript"></script>
 		<script type="text/javascript" src="/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 		<script type="text/javascript" src="/js/flot/jquery.flot.js"></script>
 		<script type="text/javascript" src="/js/flot/jquery.flot.pie.js"></script>
+                <script src="js/jquery-1.10.2.js"></script>
+                <script src="js/bootstrap.js"></script>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
@@ -71,7 +74,7 @@ require_once 'inc/charfunctions.php';
 					<div class="account-text">
 					<?php if($user->data['is_registered']){ ?>
 						<span class="welcome-message block">Welcome back, <?php print $user->data['username']; ?></span>
-						<span class="welcome-text"><a href="/accounts.php">Account Management</a></span>
+						<span class="welcome-text"><a href="/manage.php">Account Management</a></span>
 						<span class="welcome-text"> | (<a href="/<?php echo $script_directory; ?>board/ucp.php?i=pm&folder=inbox"><?php print $user->data['user_unread_privmsg']; ?></a>) | </span>
 						<span class="welcome-text">
 							<a href='/<?php echo $script_directory; ?>board/ucp.php?mode=logout&amp;sid=<?php print $user->data['session_id'];?>'>Log out</a>

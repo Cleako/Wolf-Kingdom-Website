@@ -14,7 +14,7 @@ function error($s) {
 		exit($s);
 	}
 
-	include 'data_conversions.php';
-	include 'mysql.php';
+	include 'inc/data_conversions.php';
+	include 'inc/mysql.php';
 	$db = new DBLayer($config['mysqlhost'], $config['mysqluser'], $config['mysqlpass'], $config['mysqldb'], '', false);
 	
