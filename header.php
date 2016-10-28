@@ -24,8 +24,8 @@ $user->session_begin();
 $auth->acl($user->data);
 $user->setup('viewforum'); 
 
-require_once './inc/database_config.php';
-require_once './inc/charfunctions.php';
+require_once 'inc/database_config.php';
+require_once 'inc/charfunctions.php';
 ?>
 <!doctype html>
 <html>

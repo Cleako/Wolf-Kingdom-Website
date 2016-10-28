@@ -2,6 +2,7 @@
 session_start();
 
 include_once 'common.php';
+include 'charfunctions.php';
 
 if (isset($_SESSION['usr_id'])) {
 
@@ -63,7 +64,29 @@ include 'header.php';
     <td colspan="2"><input type="submit" name="submit" value="Change" /></td>
   </tr>
 </table>
-</forsm>
+</form>
+        
+<br>
+<br>
+
+<div id="character">
+    <?php
+      
+  
+    $query = "SELECT * FROM wk_players WHERE username='".$_SESSION['usr_name']."'";
+    $stmt = $con->prepare($query);
+    @$stmt->bind_param('s', $_SESSION['usr_name']);
+    $stmt->execute();
+    $res = $stmt->get_result();
+?>
+<p><?php while($row = $res->fetch_array()):
+echo drawCharacter($row['haircolour'],$row['headsprite'],$row['skincolour'],$row['topcolour'],$row['male'],$row['trousercolour']); 
+endwhile;
+    
+        
+        ?>
+</div>
+
 <?php
 } else { ?>
 Not logged in.
