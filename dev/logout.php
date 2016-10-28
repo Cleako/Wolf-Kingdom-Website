@@ -9,4 +9,3 @@ if(isset($_SESSION['usr_id'])) {
 } else {
 	header("Location: index.php");
 }
-?>

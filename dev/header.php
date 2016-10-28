@@ -3,9 +3,12 @@
 <head>
 	<title>Wolf Kingdom</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" >
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+        
 </head>
 <body>
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/bootstrap.js"></script>
 
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
