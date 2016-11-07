@@ -79,7 +79,6 @@ require_once 'inc/charfunctions.php';
 						<span class="welcome-text">
 							<a href='/<?php echo $script_directory; ?>board/ucp.php?mode=logout&amp;sid=<?php print $user->data['session_id'];?>'>Log out</a>
 						</span>
-						<iframe src="https://discordapp.com/widget?id=160002939178582016&theme=dark" width="320" height="400" allowtransparency="true" frameborder="0"></iframe>
 					<?php 
                                         } else { 
                                         ?>
@@ -97,7 +96,6 @@ require_once 'inc/charfunctions.php';
 								</form> 
 								<a class="submit" href="/<?php echo $script_directory; ?>board/ucp.php?mode=register">Register</a> 
                                                             </div>
-                                                            <iframe src="https://discordapp.com/widget?id=160002939178582016&theme=dark" width="320" height="400" allowtransparency="true" frameborder="0"></iframe>
                                                     </div>
                                                 </aside
                                         <?php         

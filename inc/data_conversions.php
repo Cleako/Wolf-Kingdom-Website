@@ -9,7 +9,7 @@
 		$experienceArray[$index] = ($exp & 0xffffffc) / 4;
 	}
 
-	function usernameToHash($s) {
+	/*function usernameToHash($s) {
 		$s = strtolower($s);
 		$s1 = '';
 		for ($i = 0;$i < strlen($s);$i++) {
@@ -109,5 +109,5 @@
 	}
 	$rewriteValue = explode(".", $hash);
 	return $rewriteValue[0];
-}
+}*/
 	
