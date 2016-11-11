@@ -1,4 +1,6 @@
 <?php
+include_once './inc/common.php';
+
 $skill_array = array(skill_total, attack, strength, defense, hits, ranged, prayer, magic, cooking, woodcut, fletching, fishing, firemaking, crafting, smithing, mining, herblaw, agility, thieving);
 
 
@@ -16,7 +18,7 @@ $connector = new DarscapeDbc();
 
 if ($_GET['skill']) {
                 $subpage = $_GET['skill'];
-                $subpage = mysql_real_escape_string($subpage);
+                $subpage = mysqli_real_escape_string($con, $subpage);
 		$subpage = preg_replace("/[^A-Za-z0-9 ]/","_",$subpage);
 		
                 if($subpage == $skill_array[0]){

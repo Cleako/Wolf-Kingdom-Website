@@ -15,7 +15,7 @@ if($user->data['is_registered']) {
 				<h4>Account Management</h4>
 				<p>Manage your hero accounts, view their statistics, and change up your gear!</p>
 				<a id="inline" href="#create" class="button">Create Hero</a>
-				<?php if(mysql_num_rows($characters_result) > 0){ ?>
+				<?php if(mysqli_num_rows($characters_result) > 0){ ?>
 					<div id="sm-list">
 						<ul>
 					<?php 

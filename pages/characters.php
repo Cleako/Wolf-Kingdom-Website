@@ -4,6 +4,9 @@ if(!defined('IN_PHPBB'))
 	die("You do not have permission to access this file.");
 }
 
+include_once './inc/common.php';
+include './inc/charfunctions2.php';
+
 $skill_array = array(attack, strength, defense, hitpoints, ranged, prayer, magic, cooking, woodcut, fletching, fishing, firemaking, crafting, smithing, mining, herblaw, agility, thieving);
 
 function buildSQLArray($array) {
@@ -19,7 +22,7 @@ function buildSQLArray($array) {
 
 $connector = new DarscapeDbc();
 
-$subpage = mysql_real_escape_string($subpage);
+$subpage = mysqli_real_escape_string($con, $subpage);
 $subpage = preg_replace("/[^A-Za-z0-9 ]/"," ",$subpage);
 $skills = buildSQLArray($skill_array);
 $character_result = $connector->query("SELECT ".$skills.",wk_players.* FROM wk_experience LEFT JOIN wk_players ON wk_experience.user = wk_players.user WHERE wk_players.username = '$subpage'");

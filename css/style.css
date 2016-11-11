@@ -648,6 +648,48 @@ label {
 	position: relative;
 }
 
+#weapon1 {
+	display: block;
+	left: 3px;
+	top:-76px;
+	position: relative;
+}
+
+#weapon2 {
+	display: block;
+	left: 3px;
+	top:-76px;
+	position: relative;
+}
+
+#weapon3 {
+	display: block;
+	left: 3px;
+	top:-76px;
+	position: relative;
+}
+
+#weapon4 {
+	display: block;
+	left: 3px;
+	top:-76px;
+	position: relative;
+}
+
+#weapon5 {
+	display: block;
+	left: 3px;
+	top:-76px;
+	position: relative;
+}
+
+#weapon6 {
+	display: block;
+	left: 3px;
+	top:-76px;
+	position: relative;
+}
+
 #sm-skill {
 	float:left;
 	width:330px;

@@ -30,20 +30,21 @@ function buildSQLArray($array) {
 
 require_once '../inc/database_config.php';
 require_once '../inc/charfunctions.php';
+include '../inc/charfunctions2.php';
 include("../inc/peoplesignClient.php");
 
-$script_directory = '../';
+$script_directory = '/';
 $connector = new DarscapeDbc();
 if($_POST['nm']){
 
 	$username = $_POST['nm'];
 	$password = $_POST['pw'];
 	
-	$username = mysql_real_escape_string($username);
+	$username = mysqli_real_escape_string($username);
 	$username = preg_replace("/[^A-Za-z0-9 ]/"," ",$username);
 	
 	$user_result = $connector->query("SELECT user FROM wk_players WHERE username='$username'");
-	$num_users_row = mysql_num_rows($user_result);
+	$num_users_row = mysqli_num_rows($con, $user_result);
 	
 	if($num_users_row != 0){
 		echo 0;
@@ -95,6 +96,12 @@ $userhash = $_POST["userenc"];
 $combat = $_POST["combat"];
 $id = $_POST["owner"];
 $online = $_POST["online"];
+$weapon1 = $_POST["weapon1"];
+$weapon2 = $_POST["weapon2"];
+$weapon3 = $_POST["weapon3"];
+$weapon4 = $_POST["weapon4"];
+$weapon5 = $_POST["weapon5"];
+$weapon6 = $_POST["weapon6"];
 
 $usernamelink = preg_replace("/[^A-Za-z0-9]/","-",$username);
 
@@ -108,14 +115,20 @@ if($check['phpbb_id'] == $user->data['user_id']){
 ?>
 	<div id="character">
 	<?php
-	echo drawCharacter($_POST['hair'],$_POST['head'],$_POST['skin'],$_POST['top'],$_POST['gen'],$_POST['pants']);
+	echo drawCharacter($_POST['hair'],$_POST['head'],$_POST['skin'],$_POST['top'],$_POST['gen'],$_POST['pants'],$_POST['weapon1'],$_POST['weapon2'],$_POST['weapon3'],$_POST['weapon4'],$_POST['weapon5'],$_POST['weapon6']);
 	?>
 	</div>
 	<div id="hero-page-details">
 		<span class="sm-stats"><?php echo $username; ?></span>
 		<span class="sm-stats">Combat Level: <?php echo $combat; ?></span>
-		<span class="sm-stats"><a href="<?php echo $script_directory; ?>highscores.php/characters/<?php echo $usernamelink; ?>">View Skill Levels</a></span>
+		<span class="sm-stats"><a href="/highscores.php/characters/<?php echo $usernamelink; ?>">View Skill Levels</a></span>
 		<?php if($online == 1) { echo '<span id="green">Online</span>'; } else { echo '<span id="red">Offline</span>'; } ?>
+                <span class="sm-stats">Weapon ID1: <?php echo $weapon1; ?></span>
+                <span class="sm-stats">Weapon ID2: <?php echo $weapon2; ?></span>
+                <span class="sm-stats">Weapon ID3: <?php echo $weapon3; ?></span>
+                <span class="sm-stats">Weapon ID4: <?php echo $weapon4; ?></span>
+                <span class="sm-stats">Weapon ID5: <?php echo $weapon5; ?></span>
+                <span class="sm-stats">Weapon ID6: <?php echo $weapon6; ?></span>
 	</div>
 	<div id="button-links">
 		<a id="inline" href="#<?php echo ($online == 1) ? 'error' : 'pass' ;?>" class="button">Change Password</a>
