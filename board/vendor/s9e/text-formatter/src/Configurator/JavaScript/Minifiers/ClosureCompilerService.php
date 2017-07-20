@@ -2,7 +2,7 @@
 
 /*
 * @package   s9e\TextFormatter
-* @copyright Copyright (c) 2010-2016 The s9e Authors
+* @copyright Copyright (c) 2010-2017 The s9e Authors
 * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
 */
 namespace s9e\TextFormatter\Configurator\JavaScript\Minifiers;
@@ -16,6 +16,7 @@ class ClosureCompilerService extends OnlineMinifier
 	public $url = 'http://closure-compiler.appspot.com/compile';
 	public function __construct()
 	{
+		parent::__construct();
 		$this->externs = \file_get_contents(__DIR__ . '/../externs.service.js');
 	}
 	public function getCacheDifferentiator()
@@ -78,7 +79,7 @@ class ClosureCompilerService extends OnlineMinifier
 	}
 	protected function query($body)
 	{
-		return $this->getHttpClient()->post(
+		return $this->httpClient->post(
 			$this->url,
 			array('Content-Type: application/x-www-form-urlencoded'),
 			$body

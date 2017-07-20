@@ -16,8 +16,8 @@ $settings['siteDir'] = $site;
 
 // Database variables
 $settings['dbhost'] = 'localhost';
-$settings['dbusername'] = 'wk';
-$settings['dbpassword'] = 'wolf';
+$settings['dbusername'] = 'root';
+$settings['dbpassword'] = '';
 $settings['dbname'] = 'wolf_kingdom';
                 
 return $settings;

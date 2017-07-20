@@ -120,7 +120,7 @@ class fulltext_native extends \phpbb\search\base
 		$this->phpbb_dispatcher = $phpbb_dispatcher;
 		$this->user = $user;
 
-		$this->word_length = array('min' => $this->config['fulltext_native_min_chars'], 'max' => $this->config['fulltext_native_max_chars']);
+		$this->word_length = array('min' => (int) $this->config['fulltext_native_min_chars'], 'max' => (int) $this->config['fulltext_native_max_chars']);
 
 		/**
 		* Load the UTF tools
@@ -878,7 +878,6 @@ class fulltext_native extends \phpbb\search\base
 
 				break;
 
-				case 'sqlite':
 				case 'sqlite3':
 					$sql_array_count['SELECT'] = ($type == 'posts') ? 'DISTINCT p.post_id' : 'DISTINCT p.topic_id';
 					$sql = 'SELECT COUNT(' . (($type == 'posts') ? 'post_id' : 'topic_id') . ') as total_results
@@ -1185,7 +1184,7 @@ class fulltext_native extends \phpbb\search\base
 					}
 					else
 					{
-						if ($this->db->get_sql_layer() == 'sqlite' || $this->db->get_sql_layer() == 'sqlite3')
+						if ($this->db->get_sql_layer() == 'sqlite3')
 						{
 							$sql = 'SELECT COUNT(topic_id) as total_results
 								FROM (SELECT DISTINCT t.topic_id';
@@ -1202,7 +1201,7 @@ class fulltext_native extends \phpbb\search\base
 								$post_visibility
 								$sql_fora
 								AND t.topic_id = p.topic_id
-								$sql_time" . (($this->db->get_sql_layer() == 'sqlite' || $this->db->get_sql_layer() == 'sqlite3') ? ')' : '');
+								$sql_time" . ($this->db->get_sql_layer() == 'sqlite3' ? ')' : '');
 					}
 					$result = $this->db->sql_query($sql);
 
@@ -1261,7 +1260,7 @@ class fulltext_native extends \phpbb\search\base
 		if (!$total_results && $is_mysql)
 		{
 			// Count rows for the executed queries. Replace $select within $sql with SQL_CALC_FOUND_ROWS, and run it.
-			$sql_calc = str_replace('SELECT ' . $select, 'SELECT DISTINCT SQL_CALC_FOUND_ROWS p.post_id', $sql);
+			$sql_calc = str_replace('SELECT ' . $select, 'SELECT SQL_CALC_FOUND_ROWS ' . $select, $sql);
 
 			$result = $this->db->sql_query($sql_calc);
 			$this->db->sql_freeresult($result);
@@ -1667,7 +1666,6 @@ class fulltext_native extends \phpbb\search\base
 	{
 		switch ($this->db->get_sql_layer())
 		{
-			case 'sqlite':
 			case 'sqlite3':
 				$this->db->sql_query('DELETE FROM ' . SEARCH_WORDLIST_TABLE);
 				$this->db->sql_query('DELETE FROM ' . SEARCH_WORDMATCH_TABLE);

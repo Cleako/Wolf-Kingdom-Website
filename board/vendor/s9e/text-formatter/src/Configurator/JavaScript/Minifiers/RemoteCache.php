@@ -2,7 +2,7 @@
 
 /*
 * @package   s9e\TextFormatter
-* @copyright Copyright (c) 2010-2016 The s9e Authors
+* @copyright Copyright (c) 2010-2017 The s9e Authors
 * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
 */
 namespace s9e\TextFormatter\Configurator\JavaScript\Minifiers;
@@ -14,7 +14,7 @@ class RemoteCache extends OnlineMinifier
 	public function minify($src)
 	{
 		$url  = $this->url . '?hash=' . $this->getHash($src);
-		$code = $this->getHttpClient()->get($url);
+		$code = $this->httpClient->get($url);
 		if ($code === \false)
 			throw new RuntimeException;
 		return $code;

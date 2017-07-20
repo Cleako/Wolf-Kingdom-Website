@@ -75,6 +75,7 @@ switch ($mode)
 		{
 			if ($user->data['user_id'] != ANONYMOUS)
 			{
+				send_status_line(403, 'Forbidden');
 				trigger_error('NO_VIEW_USERS');
 			}
 
@@ -104,7 +105,10 @@ switch ($mode)
 {
 	case 'team':
 		// Display a listing of board admins, moderators
-		include($phpbb_root_path . 'includes/functions_user.' . $phpEx);
+		if (!function_exists('user_get_id_name'))
+		{
+			include($phpbb_root_path . 'includes/functions_user.' . $phpEx);
+		}
 
 		$page_title = $user->lang['THE_TEAM'];
 		$template_html = 'memberlist_team.html';
@@ -372,6 +376,7 @@ switch ($mode)
 
 		if (!$auth->acl_get('u_sendim'))
 		{
+			send_status_line(403, 'Forbidden');
 			trigger_error('NOT_AUTHORISED');
 		}
 

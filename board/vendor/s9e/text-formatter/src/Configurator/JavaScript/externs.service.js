@@ -39,6 +39,13 @@ var Infinity;
  * @const
  */
 var undefined;
+/** @typedef {?} */
+var symbol;
+/**
+ * @param {string=} opt_description
+ * @return {symbol}
+ */
+function Symbol(opt_description) {}
 /**
  * @param {string} uri
  * @return {string}
@@ -73,6 +80,7 @@ function parseInt(num, base) {}
 /**
  * @constructor
  * @implements {IArrayLike<T>}
+ * @implements {Iterable<T>}
  * @param {...*} var_args
  * @return {!Array<?>}
  * @nosideeffects
@@ -84,6 +92,7 @@ function Array(var_args) {}
  * @param {S=} opt_thisobj
  * @this {IArrayLike<T>|string}
  * @template T,S
+ * @return {undefined}
  */
 Array.prototype.forEach = function(callback, opt_thisobj) {};
 /**
@@ -122,7 +131,9 @@ Array.prototype.pop = function() {};
  */
 Array.prototype.push = function(var_args) {};
 /**
- * @this {IArrayLike<?>}
+ * @return {THIS} A reference to the original modified array.
+ * @this {THIS}
+ * @template THIS
  * @modifies {this}
  */
 Array.prototype.reverse = function() {};
@@ -146,6 +157,8 @@ Array.prototype.slice = function(opt_begin, opt_end) {};
  * @param {function(T,T):number=} opt_compareFunction Specifies a function that
  * @this {IArrayLike<T>}
  * @template T
+ * @modifies {this}
+ * @return {!Array<T>}
  */
 Array.prototype.sort = function(opt_compareFunction) {};
 /**
@@ -158,6 +171,13 @@ Array.prototype.sort = function(opt_compareFunction) {};
  * @template T
  */
 Array.prototype.splice = function(opt_index, opt_howMany, var_args) {};
+/**
+ * @param {...*} var_args
+ * @return {number} The new length of the array
+ * @this {IArrayLike<?>}
+ * @modifies {this}
+ */
+Array.prototype.unshift = function(var_args) {};
 /**
  * @param {?=} opt_yr_num
  * @param {?=} opt_mo_num
@@ -180,7 +200,6 @@ Date.parse = function(date) {};
 /**
  * @constructor
  * @param {...*} var_args
- * @nosideeffects
  * @throws {Error}
  */
 function Function(var_args) {}
@@ -336,19 +355,6 @@ String.prototype.toLowerCase = function() {};
  * @nosideeffects
  */
 String.prototype.toUpperCase = function() {};
-/** @typedef {?} */
-var symbol;
-/**
- * @param {string} description
- * @return {symbol}
- */
-function Symbol(description) {}
-/**
- * @param {Node} externalNode
- * @param {boolean} deep
- * @return {Node}
- */
-Document.prototype.importNode = function(externalNode, deep) {};
 /**
  * @type {string}
  * @implicitCast
@@ -394,6 +400,7 @@ function DocumentFragment() {}
  * @constructor
  * @implements {IObject<(string|number), T>}
  * @implements {IArrayLike<T>}
+ * @implements {Iterable<T>}
  * @template T
  */
 function NamedNodeMap() {}
@@ -464,6 +471,7 @@ Node.prototype.removeChild = function(oldChild) {};
 /**
  * @constructor
  * @implements {IArrayLike<T>}
+ * @implements {Iterable<T>}
  * @template T
  */
 function NodeList() {}
@@ -481,6 +489,12 @@ function Element() {}
  */
 function Window() {}
 /**
+ * @param {Node} externalNode
+ * @param {boolean} deep
+ * @return {Node}
+ */
+Document.prototype.importNode = function(externalNode, deep) {};
+/**
  * @constructor
  * @extends {Document}
  */
@@ -491,27 +505,27 @@ function HTMLDocument() {}
  */
 function HTMLElement() {}
 /**
- * @param {string} namespaceURI
+ * @param {?string} namespaceURI
  * @param {string} localName
  * @return {string}
  * @nosideeffects
  */
 Element.prototype.getAttributeNS = function(namespaceURI, localName) {};
 /**
- * @param {string} namespaceURI
+ * @param {?string} namespaceURI
  * @param {string} localName
  * @return {boolean}
  * @nosideeffects
  */
 Element.prototype.hasAttributeNS = function(namespaceURI, localName) {};
 /**
- * @param {string} namespaceURI
+ * @param {?string} namespaceURI
  * @param {string} localName
  * @return {undefined}
  */
 Element.prototype.removeAttributeNS = function(namespaceURI, localName) {};
 /**
- * @param {string} namespaceURI
+ * @param {?string} namespaceURI
  * @param {string} qualifiedName
  * @param {string|number|boolean} value Values are converted to strings with
  * @return {undefined}

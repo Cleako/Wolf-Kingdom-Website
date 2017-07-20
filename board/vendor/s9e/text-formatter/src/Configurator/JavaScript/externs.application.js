@@ -30,12 +30,6 @@ punycode.toASCII;
 /** @constructor */
 function XSLTProcessor() {}
 /**
- * @param {Node} externalNode
- * @param {boolean} deep
- * @return {Node}
- */
-Document.prototype.importNode = function(externalNode, deep) {};
-/**
  * @type {string}
  * @implicitCast
  */
@@ -80,6 +74,7 @@ function DocumentFragment() {}
  * @constructor
  * @implements {IObject<(string|number), T>}
  * @implements {IArrayLike<T>}
+ * @implements {Iterable<T>}
  * @template T
  */
 function NamedNodeMap() {}
@@ -150,6 +145,7 @@ Node.prototype.removeChild = function(oldChild) {};
 /**
  * @constructor
  * @implements {IArrayLike<T>}
+ * @implements {Iterable<T>}
  * @template T
  */
 function NodeList() {}
@@ -167,6 +163,12 @@ function Element() {}
  */
 function Window() {}
 /**
+ * @param {Node} externalNode
+ * @param {boolean} deep
+ * @return {Node}
+ */
+Document.prototype.importNode = function(externalNode, deep) {};
+/**
  * @constructor
  * @extends {Document}
  */
@@ -177,27 +179,27 @@ function HTMLDocument() {}
  */
 function HTMLElement() {}
 /**
- * @param {string} namespaceURI
+ * @param {?string} namespaceURI
  * @param {string} localName
  * @return {string}
  * @nosideeffects
  */
 Element.prototype.getAttributeNS = function(namespaceURI, localName) {};
 /**
- * @param {string} namespaceURI
+ * @param {?string} namespaceURI
  * @param {string} localName
  * @return {boolean}
  * @nosideeffects
  */
 Element.prototype.hasAttributeNS = function(namespaceURI, localName) {};
 /**
- * @param {string} namespaceURI
+ * @param {?string} namespaceURI
  * @param {string} localName
  * @return {undefined}
  */
 Element.prototype.removeAttributeNS = function(namespaceURI, localName) {};
 /**
- * @param {string} namespaceURI
+ * @param {?string} namespaceURI
  * @param {string} qualifiedName
  * @param {string|number|boolean} value Values are converted to strings with
  * @return {undefined}
