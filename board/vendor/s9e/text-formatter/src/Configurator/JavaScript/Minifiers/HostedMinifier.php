@@ -2,7 +2,7 @@
 
 /*
 * @package   s9e\TextFormatter
-* @copyright Copyright (c) 2010-2016 The s9e Authors
+* @copyright Copyright (c) 2010-2017 The s9e Authors
 * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
 */
 namespace s9e\TextFormatter\Configurator\JavaScript\Minifiers;
@@ -21,7 +21,7 @@ class HostedMinifier extends OnlineMinifier
 			$headers[] = 'Content-Encoding: gzip';
 			$body      = \gzencode($body, $this->gzLevel);
 		}
-		$code = $this->getHttpClient()->post($this->url, $headers, $body);
+		$code = $this->httpClient->post($this->url, $headers, $body);
 		if ($code === \false)
 			throw new RuntimeException;
 		return $code;

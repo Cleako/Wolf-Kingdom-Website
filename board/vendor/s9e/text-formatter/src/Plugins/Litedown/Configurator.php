@@ -2,14 +2,14 @@
 
 /*
 * @package   s9e\TextFormatter
-* @copyright Copyright (c) 2010-2016 The s9e Authors
+* @copyright Copyright (c) 2010-2017 The s9e Authors
 * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
 */
 namespace s9e\TextFormatter\Plugins\Litedown;
 use s9e\TextFormatter\Plugins\ConfiguratorBase;
 class Configurator extends ConfiguratorBase
 {
-	protected $decodeHtmlEntities = \false;
+	public $decodeHtmlEntities = \false;
 	protected $tags = array(
 		'C'      => '<code><xsl:apply-templates /></code>',
 		'CODE'   => array(
@@ -21,7 +21,13 @@ class Configurator extends ConfiguratorBase
 			),
 			'template' =>
 				'<pre>
-					<code class="{@lang}">
+					<code>
+						<xsl:if test="@lang">
+							<xsl:attribute name="class">
+								<xsl:text>language-</xsl:text>
+								<xsl:value-of select="@lang"/>
+							</xsl:attribute>
+						</xsl:if>
 						<xsl:apply-templates />
 					</code>
 				</pre>'
@@ -106,7 +112,7 @@ class Configurator extends ConfiguratorBase
 	}
 	public function asConfig()
 	{
-		return array('decodeHtmlEntities' => $this->decodeHtmlEntities);
+		return array('decodeHtmlEntities' => (bool) $this->decodeHtmlEntities);
 	}
 	public function getJSHints()
 	{

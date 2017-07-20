@@ -2,7 +2,7 @@
 
 /*
 * @package   s9e\TextFormatter
-* @copyright Copyright (c) 2010-2016 The s9e Authors
+* @copyright Copyright (c) 2010-2017 The s9e Authors
 * @license   http://www.opensource.org/licenses/mit-license.php The MIT License
 */
 namespace s9e\TextFormatter\Configurator\JavaScript;
@@ -52,6 +52,7 @@ class HintGenerator
 	{
 		$this->hints['closeAncestor']   = 0;
 		$this->hints['closeParent']     = 0;
+		$this->hints['createChild']     = 0;
 		$this->hints['fosterParent']    = 0;
 		$this->hints['requireAncestor'] = 0;
 		$flags = 0;

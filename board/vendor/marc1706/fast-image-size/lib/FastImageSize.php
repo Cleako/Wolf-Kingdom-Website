@@ -78,7 +78,7 @@ class FastImageSize
 	{
 		foreach ($this->supportedTypes as $imageType => $extension)
 		{
-			$className = '\FastImageSize\Type\Type' . ucfirst(strtolower($imageType));
+			$className = '\FastImageSize\Type\Type' . mb_convert_case(mb_strtolower($imageType), MB_CASE_TITLE);
 			$this->type[$imageType] = new $className($this);
 
 			// Create class map
@@ -149,6 +149,7 @@ class FastImageSize
 	 */
 	protected function getImageSizeByExtension($file, $extension)
 	{
+		$extension = strtolower($extension);
 		if (isset($this->classMap[$extension]))
 		{
 			$this->classMap[$extension]->getSize($file);

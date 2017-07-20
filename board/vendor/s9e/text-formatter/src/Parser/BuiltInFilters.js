@@ -339,7 +339,7 @@ var BuiltInFilters =
 	*/
 	parseUrl: function(url)
 	{
-		var regexp = /^(?:([a-z][-+.\w]*):)?(?:\/\/(?:([^:\/?#]*)(?::([^\/?#]*)?)?@)?(?:(\[[a-f\d:]+\]|[^:\/?#]+)(?::(\d*))?)?(?![^\/?#]))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?$/i;
+		var regexp = /^(?:([a-z][-+.\w]*):)?(?:\/\/(?:([^:\/?#]*)(?::([^\/?#]*)?)?@)?(?:(\[[a-f\d:]+\]|[^:\/?#]+)(?::(\d*))?)?(?![^\/?#]))?([^?#]*)(\?[^#]*)?(#.*)?$/i;
 
 		// NOTE: this regexp always matches because of the last three captures
 		var m = regexp['exec'](url),
@@ -368,7 +368,7 @@ var BuiltInFilters =
 		parts['host'] = parts['host'].replace(/[\u3002\uff0e\uff61]/g, '.').replace(/\.+$/g, '');
 
 		// Test whether host has non-ASCII characters and punycode it if possible
-		if (/[^\x00-\x7F]/.test(parts['host']) && punycode)
+		if (/[^\x00-\x7F]/.test(parts['host']) && typeof punycode !== 'undefined')
 		{
 			parts['host'] = punycode.toASCII(parts['host']);
 		}
@@ -428,15 +428,7 @@ var BuiltInFilters =
 		}
 
 		// Build the path, including the query and fragment parts
-		var path = p['path'];
-		if (p['query'] !== '')
-		{
-			path += '?' + p['query'];
-		}
-		if (p['fragment'] !== '')
-		{
-			path += '#' + p['fragment'];
-		}
+		var path = p['path'] + p['query'] + p['fragment'];
 
 		/**
 		* "For consistency, URI producers and normalizers should use uppercase hexadecimal digits
@@ -493,7 +485,7 @@ var BuiltInFilters =
 	*/
 	sanitizeUrl: function(url)
 	{
-		return url.replace(/[^\u0020-\u007E]+/g, encodeURIComponent).replace(/%(?![0-9A-Fa-f]{2})|[^!#-&*-;=?-Z_a-z]/g, escape);
+		return url.replace(/[^\u0020-\u007E]+/g, encodeURIComponent).replace(/%(?![0-9A-Fa-f]{2})|[^!#-&*-;=?-Z_a-z~]/g, escape);
 	},
 
 	/**

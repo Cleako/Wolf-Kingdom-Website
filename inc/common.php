@@ -5,8 +5,8 @@ include 'mysql.php';
 $config = array(
 	'mysqlhost' => 'localhost',
 	'mysqldb' => 'wolf_kingdom',
-	'mysqluser' => 'wk',
-	'mysqlpass' => 'wolf'
+	'mysqluser' => 'root',
+	'mysqlpass' => ''
 );
 
 $db = new DBLayer($config['mysqlhost'], $config['mysqluser'], $config['mysqlpass'], $config['mysqldb'], '', false);

@@ -85,7 +85,7 @@ class YamlFileLoader extends FileLoader
      * @param array  $content
      * @param string $file
      */
-    private function parseImports($content, $file)
+    private function parseImports(array $content, $file)
     {
         if (!isset($content['imports'])) {
             return;
@@ -112,7 +112,7 @@ class YamlFileLoader extends FileLoader
      * @param array  $content
      * @param string $file
      */
-    private function parseDefinitions($content, $file)
+    private function parseDefinitions(array $content, $file)
     {
         if (!isset($content['services'])) {
             return;
@@ -130,9 +130,9 @@ class YamlFileLoader extends FileLoader
     /**
      * Parses a definition.
      *
-     * @param string $id
-     * @param array  $service
-     * @param string $file
+     * @param string       $id
+     * @param array|string $service
+     * @param string       $file
      *
      * @throws InvalidArgumentException When tags are invalid
      */
@@ -299,6 +299,10 @@ class YamlFileLoader extends FileLoader
         }
 
         if (isset($service['decorates'])) {
+            if ('' !== $service['decorates'] && '@' === $service['decorates'][0]) {
+                throw new InvalidArgumentException(sprintf('The value of the "decorates" option for the "%s" service must be the id of the service without the "@" prefix (replace "%s" with "%s").', $id, $service['decorates'], substr($service['decorates'], 1)));
+            }
+
             $renameId = isset($service['decoration_inner_name']) ? $service['decoration_inner_name'] : null;
             $priority = isset($service['decoration_priority']) ? $service['decoration_priority'] : 0;
             $definition->setDecoratedService($service['decorates'], $renameId, $priority);
@@ -349,7 +353,7 @@ class YamlFileLoader extends FileLoader
         }
 
         if (!file_exists($file)) {
-            throw new InvalidArgumentException(sprintf('The service file "%s" is not valid.', $file));
+            throw new InvalidArgumentException(sprintf('The file "%s" does not exist.', $file));
         }
 
         if (null === $this->yamlParser) {
@@ -416,9 +420,9 @@ class YamlFileLoader extends FileLoader
     {
         if (is_array($value)) {
             $value = array_map(array($this, 'resolveServices'), $value);
-        } elseif (is_string($value) &&  0 === strpos($value, '@=')) {
+        } elseif (is_string($value) && 0 === strpos($value, '@=')) {
             return new Expression(substr($value, 2));
-        } elseif (is_string($value) &&  0 === strpos($value, '@')) {
+        } elseif (is_string($value) && 0 === strpos($value, '@')) {
             if (0 === strpos($value, '@@')) {
                 $value = substr($value, 1);
                 $invalidBehavior = null;
@@ -450,7 +454,7 @@ class YamlFileLoader extends FileLoader
      *
      * @param array $content
      */
-    private function loadFromExtensions($content)
+    private function loadFromExtensions(array $content)
     {
         foreach ($content as $namespace => $values) {
             if (in_array($namespace, array('imports', 'parameters', 'services'))) {
